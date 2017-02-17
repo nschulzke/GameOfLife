@@ -10,7 +10,6 @@ private:
 	static bool** blankSeed(int rows, int cols);
 public:
 	static bool** glider(int rows, int cols);
-	Seeder();
-	~Seeder();
+
 };
 

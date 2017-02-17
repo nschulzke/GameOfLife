@@ -4,11 +4,15 @@
 
 int main()
 {
-	bool** seed = Seeder::glider(10, 10);
+	int rows = 20;
+	int cols = 20;
+	int rounds = 200;
 
-	Life life(10, 10, seed);
+	bool** seed = Seeder::glider(rows, cols);
 
-	for (int i = 0; i < 20; i++)
+	Life life(rows, cols, seed);
+
+	for (int i = 0; i < rounds; i++)
 	{
 		std::cout << life << std::endl;
 		life.step();

@@ -31,12 +31,3 @@ bool** Seeder::glider(int rows, int cols)
 	}
 	return seed;
 }
-
-Seeder::Seeder()
-{
-}
-
-
-Seeder::~Seeder()
-{
-}
