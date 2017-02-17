@@ -8,20 +8,19 @@ private:
 	static const int GLIDER_COLS = 3;
 	static const bool GLIDER[GLIDER_ROWS][GLIDER_COLS];
 
-	// Generates the dynamic memory array, initializes all data to false
-	static bool** blankSeed(int rows, int cols);
-
 	int _rows;
 	int _cols;
 	bool** _seed;
 
+	// Generates the dynamic memory array, initializes all data to false
+	void blankSeed(int rows, int cols);
 	// Copies _rows, _cols, and dynamic _seed from seedIn
 	void deepCopy(const Seed& seedIn);
 	// Deletes _seed
 	void deleteSeed();
 public:
 	// Make a Seed object from a bool**
-	Seed(int rows, int cols, bool** seed);
+	Seed(int rows, int cols);
 	// Copy constructor
 	Seed(const Seed& seedIn);
 	// Assignment operator

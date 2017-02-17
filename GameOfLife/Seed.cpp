@@ -6,21 +6,20 @@ const bool Seed::GLIDER[GLIDER_ROWS][GLIDER_COLS] = {
 	{ true, true, true }
 };
 
-bool** Seed::blankSeed(int rows, int cols)
+void Seed::blankSeed(int rows, int cols)
 {
 	// Make the new seed
-	bool** seed = new bool*[rows];
+	_seed = new bool*[rows];
 	// Create the rows
 	for (int i = 0; i < rows; i++)
-		seed[i] = new bool[cols];
+		_seed[i] = new bool[cols];
 	// Fill all cells with false
 	for (int i = 0; i < rows; i++)
-		for (int j = 0; j < cols; j++)
-			seed[i][j] = false;
-	return seed;
+		for (int j = 0; j < _cols; j++)
+			_seed[i][j] = false;
 }
 
-void Seed::deepCopy(const Seed & seedIn)
+void Seed::deepCopy(const Seed& seedIn)
 {	// Make every value in this = every value in seedIn
 	_rows = seedIn._rows;
 	_cols = seedIn._cols;
@@ -41,16 +40,16 @@ void Seed::deleteSeed()
 	}
 }
 
-Seed::Seed(int rows, int cols, bool** seed)
+Seed::Seed(int rows, int cols)
 {
 	_rows = rows;
 	_cols = cols;
-	_seed = blankSeed(_rows, _cols);
+	blankSeed(_rows, _cols);
 }
 
 Seed::Seed(const Seed& seedIn)
 {	// Copy constructor: first build a blank Seed, then copy the data from seedIn
-	_seed = blankSeed(seedIn._rows, seedIn._cols);
+	blankSeed(seedIn.rows(), seedIn.cols());
 	deepCopy(seedIn);
 }
 
@@ -60,7 +59,7 @@ Seed& Seed::operator=(const Seed & rhs)
 		return *this;
 	// Delete the current seed and deep copy from the other guy
 	deleteSeed();
-	_seed = blankSeed(_rows, _cols);
+	blankSeed(_rows, _cols);
 	deepCopy(rhs);
 
 	return *this;
@@ -73,7 +72,7 @@ Seed::~Seed()
 
 Seed Seed::glider(int rows, int cols)
 {	// Factory method to produce a glider seed
-	Seed seed(rows, cols, blankSeed(rows, cols));	// Blank seed
+	Seed seed(rows, cols);	// Blank seed
 	if (rows >= GLIDER_ROWS && cols >= GLIDER_COLS)
 	{	// Impose the glider template (defined above) onto the blank seed
 		for (int i = 0; i < GLIDER_ROWS; i++)
