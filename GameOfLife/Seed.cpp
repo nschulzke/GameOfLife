@@ -54,12 +54,13 @@ Seed::Seed(const Seed& seedIn)
 	deepCopy(seedIn);
 }
 
-Seed & Seed::operator=(const Seed & rhs)
+Seed& Seed::operator=(const Seed & rhs)
 {	// Shortcut: don't copy if this=this
 	if (this == &rhs)
 		return *this;
 	// Delete the current seed and deep copy from the other guy
 	deleteSeed();
+	_seed = blankSeed(_rows, _cols);
 	deepCopy(rhs);
 
 	return *this;
