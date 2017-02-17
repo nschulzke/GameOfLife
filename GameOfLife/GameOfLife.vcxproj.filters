@@ -21,6 +21,9 @@
     <ClInclude Include="Life.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Seeder.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Cell.cpp">
@@ -30,6 +33,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Life.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Seeder.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
