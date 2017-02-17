@@ -47,6 +47,10 @@ public:
 
 	// Reseeds the array with a new seed of given width and height
 	void reseed(int rows, int cols, bool** seed);
+	// Takes the current board and overlays a new seed
+	//	Any cells living in the new seed will be living on the board
+	//	Dead cells on new seed have no effect on the board
+	void overlay(int rows, int cols, bool** seed);
 };
 
 // Outputs the current game in a grid format. Particularly large grids

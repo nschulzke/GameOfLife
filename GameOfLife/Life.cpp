@@ -114,6 +114,14 @@ void Life::reseed(int rows, int cols, bool** seed)
 	_steps = 0;
 }
 
+void Life::overlay(int rows, int cols, bool** seed)
+{
+	for (int i = 0; i < rows; i++)
+		for (int j = 0; j < cols; j++)
+			if (seed[i][j] == true)	// Only change board if the cell is alive
+				_board[i][j] = Cell(seed[i][j]);
+}
+
 std::ostream & operator<<(std::ostream & out, const Life& life)
 {
 	for (int i = 0; i < life.rows(); i++)
