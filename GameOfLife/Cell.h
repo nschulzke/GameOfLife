@@ -14,6 +14,6 @@ public:
 	// Makes the future state the current state
 	void step();
 
-	Cell(bool isAlive);
+	Cell(bool isAlive = false);
 };
 
