@@ -3,25 +3,25 @@
 
 int main()
 {
-	bool** seed = new bool*[5];
-	seed[0] = new bool[5]{ false, false, false, false, false };
-	seed[1] = new bool[5]{ false, false, false, false, false };
-	seed[2] = new bool[5]{ false, true, true, true, false };
-	seed[3] = new bool[5]{ false, false, false, false, false };
-	seed[4] = new bool[5]{ false, false, false, false, false };
+	bool** seed = new bool*[10];
+	seed[0] = new bool[10]{ false, false, true, false, false, false, false, false, false, false };
+	seed[1] = new bool[10]{ true, false, true, false, false, false, false, false, false, false };
+	seed[2] = new bool[10]{ false, true, true, false, false, false, false, false, false, false };
+	seed[3] = new bool[10]{ false, false, false, false, false, false, false, false, false, false };
+	seed[4] = new bool[10]{ false, false, false, false, false, false, false, false, false, false };
+	seed[5] = new bool[10]{ false, false, false, false, false, false, false, false, false, false };
+	seed[6] = new bool[10]{ false, false, false, false, false, false, false, false, false, false };
+	seed[7] = new bool[10]{ false, false, false, false, false, false, false, false, false, false };
+	seed[8] = new bool[10]{ false, false, false, false, false, false, false, false, false, false };
+	seed[9] = new bool[10]{ false, false, false, false, false, false, false, false, false, false };
 
-	Life life(5, 5, seed);
+	Life life(10, 10, seed);
 
-	std::cout << life << std::endl;
-	life.step();
-	std::cout << life << std::endl;
-	life.step();
-	std::cout << life << std::endl;
-	life.step();
-	std::cout << life << std::endl;
-	life.step();
-	std::cout << life << std::endl;
-
+	for (int i = 0; i < 20; i++)
+	{
+		std::cout << life << std::endl;
+		life.step();
+	}
 
 	system("PAUSE");
 	return 0;
