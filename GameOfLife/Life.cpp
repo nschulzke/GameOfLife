@@ -119,7 +119,7 @@ std::ostream & operator<<(std::ostream & out, const Life& life)
 	for (int i = 0; i < life.rows(); i++)
 	{
 		for (int j = 0; j < life.cols(); j++)
-			out << (life.isAlive(i, j) ? 1 : 0) << ' ';
+			out << (life.isAlive(i, j) ? (char)233 : '-') << ' ';
 		out << std::endl;
 	}
 	return out;
