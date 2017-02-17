@@ -1,11 +1,11 @@
 #include "Cell.h"
 
-bool Cell::isAlive()
+bool Cell::isAlive() const
 {
 	return _isAlive;
 }
 
-bool Cell::willBeAlive()
+bool Cell::willBeAlive() const
 {
 	return _willBeAlive;
 }
