@@ -55,7 +55,7 @@ void Life::deleteBoard()
 	}
 }
 
-void Life::allocateBoard(int rows, int cols)
+void Life::blankBoard(int rows, int cols)
 {
 	_board = new Cell*[_rows];
 	for (int i = 0; i < _rows; i++)
@@ -80,7 +80,7 @@ Life::Life(const Seed& seed)
 
 Life::Life(const Life& lifeIn)
 {
-	allocateBoard(lifeIn.rows(), lifeIn.cols());
+	blankBoard(lifeIn.rows(), lifeIn.cols());
 	deepCopy(lifeIn);
 }
 
@@ -90,7 +90,7 @@ Life& Life::operator=(const Life& rhs)
 		return *this;
 	// Delete the current seed and deep copy from the other guy
 	deleteBoard();
-	allocateBoard(rhs.rows(), rhs.cols());
+	blankBoard(rhs.rows(), rhs.cols());
 	deepCopy(rhs);
 
 	return *this;
@@ -139,7 +139,7 @@ void Life::reseed(const Seed& seed)
 	_rows = seed.rows();
 	_cols = seed.cols();
 	// Create the new board
-	allocateBoard(_rows, _cols);
+	blankBoard(_rows, _cols);
 	// Initialize the values to match the seed
 	for (int i = 0; i < seed.rows(); i++)
 		for (int j = 0; j < seed.cols(); j++)

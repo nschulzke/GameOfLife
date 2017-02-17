@@ -31,7 +31,7 @@ private:
 	// Deletes the board
 	void deleteBoard();
 	// Allocates memory for board
-	void allocateBoard(int rows, int cols);
+	void blankBoard(int rows, int cols);
 	// Copies _rows, _cols, _steps, and dynamic _board from lifeIn
 	void deepCopy(const Life& lifeIn);
 public:
