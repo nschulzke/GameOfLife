@@ -1,17 +1,5 @@
 #include "Life.h"
 
-void Life::deleteBoard()
-{
-	// If there's no board, we can't run this loop, so do nothing
-	if (_board != nullptr)
-	{	// Loop through all rows and delete them
-		for (int i = 0; i < _rows; i++)
-			delete[] _board[i];
-		// Delete the row array
-		delete[] _board;
-	}
-}
-
 void Life::mark(int row, int col)
 {
 	// These values draw a box around the cell, cells making up the box
@@ -54,10 +42,58 @@ void Life::move()
 			_board[i][j].step();
 }
 
+void Life::deleteBoard()
+{
+	// If there's no board, we can't run this loop, so do nothing
+	if (_board != nullptr)
+	{	// Loop through all rows and delete them
+		for (int i = 0; i < _rows; i++)
+			delete[] _board[i];
+		// Delete the row array
+		delete[] _board;
+		_board = nullptr;
+	}
+}
+
+void Life::allocateBoard(int rows, int cols)
+{
+	_board = new Cell*[_rows];
+	for (int i = 0; i < _rows; i++)
+		_board[i] = new Cell[_cols];
+}
+
+void Life::deepCopy(const Life& lifeIn)
+{	// Make every value in this = every value in lifeIn
+	_rows = lifeIn._rows;
+	_cols = lifeIn._cols;
+	_steps = lifeIn._steps;
+	for (int i = 0; i < _rows; i++)
+		for (int j = 0; j < _rows; j++)
+			_board[i][j] = lifeIn._board[i][j];
+}
+
 Life::Life(const Seed& seed)
 {
 	_board = nullptr;
 	reseed(seed);
+}
+
+Life::Life(const Life& lifeIn)
+{
+	allocateBoard(lifeIn.rows(), lifeIn.cols());
+	deepCopy(lifeIn);
+}
+
+Life& Life::operator=(const Life& rhs)
+{	// Shortcut: don't copy if this=this
+	if (this == &rhs)
+		return *this;
+	// Delete the current seed and deep copy from the other guy
+	deleteBoard();
+	allocateBoard(rhs.rows(), rhs.cols());
+	deepCopy(rhs);
+
+	return *this;
 }
 
 Life::~Life()
@@ -103,9 +139,7 @@ void Life::reseed(const Seed& seed)
 	_rows = seed.rows();
 	_cols = seed.cols();
 	// Create the new board
-	_board = new Cell*[seed.rows()];
-	for (int i = 0; i < seed.rows(); i++)
-		_board[i] = new Cell[seed.cols()];
+	allocateBoard(_rows, _cols);
 	// Initialize the values to match the seed
 	for (int i = 0; i < seed.rows(); i++)
 		for (int j = 0; j < seed.cols(); j++)

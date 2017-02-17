@@ -18,8 +18,7 @@ private:
 	int _rows;
 	int _cols;
 	int _steps;
-	// Deletes the board. Used by destructor and reseed();
-	void deleteBoard();
+
 	// Marks the given cell as to whether it will be alive
 	//	or dead in the next round by examining surrounding cells
 	void mark(int row, int col);
@@ -28,8 +27,21 @@ private:
 	// Goes through a marked board and actually switch the
 	//	marked cells to be dead or alive
 	void move();
+
+	// Deletes the board
+	void deleteBoard();
+	// Allocates memory for board
+	void allocateBoard(int rows, int cols);
+	// Copies _rows, _cols, _steps, and dynamic _board from lifeIn
+	void deepCopy(const Life& lifeIn);
 public:
+	// Construct from a seed
 	Life(const Seed& seed);
+	// Copy constructor
+	Life(const Life& lifeIn);
+	// Assignment operator
+	Life& operator=(const Life& rhs);
+	// Destructor
 	~Life();
 
 	// Returns the number of steps that have been taken on
