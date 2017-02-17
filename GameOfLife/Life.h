@@ -52,6 +52,8 @@ public:
 	int cols() const;
 	// Returns the alive state of the given cell
 	bool isAlive(int row, int col) const;
+	// Returns whether or not any cells are still living
+	bool hasLife() const;
 
 	// Steps through the given number of iterations
 	void step(int steps = 1);

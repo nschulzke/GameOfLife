@@ -121,6 +121,15 @@ bool Life::isAlive(int row, int col) const
 	return _board[row][col].isAlive();
 }
 
+bool Life::hasLife() const
+{
+	for (int i = 0; i < _rows; i++)
+		for (int j = 0; j < _cols; j++)
+			if (_board[i][j].isAlive())
+				return true;
+	return false;
+}
+
 void Life::step(int steps)
 {
 	for (int i = 0; i < steps; i++)
