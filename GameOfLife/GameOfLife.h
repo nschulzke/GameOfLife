@@ -7,13 +7,15 @@ class Life
 {
 private:
 	Cell** _board;
+	int _rows;
+	int _cols;
 	int _steps;
-	
-	// Will return true if the given cell will be alive
-	//	after a step
-	bool isAlive(int row, int col);
+	// Deletes the board. Used by destructor and reseed();
+	void deleteBoard();
+	// Marks the given cell as to whether it will be alive
+	//	or dead in the next round by examining surrounding cells
+	void mark(int row, int col);
 	// Goes through the board once and mark all cells
-	//	as to whether they'll be alive or dead next round
 	void mark();
 	// Goes through a marked board and actually switch the
 	//	marked cells to be dead or alive
@@ -21,17 +23,23 @@ private:
 public:
 	// Expects the passed seed array to be of the same width
 	//	and height as the values passed
-	Life(int width, int height, int** seed);
+	Life(int rows, int cols, bool** seed);
 	~Life();
 
 	// Returns the number of steps that have been taken on
 	//	the current seed
-	int steps();
+	int steps() const;
+	// Getters for _rows and _cols
+	int rows() const;
+	int cols() const;
+	// Returns the alive state of the given cell
+	bool isAlive(int row, int col) const;
+
 	// Steps through the given number of iterations
 	void step(int steps = 1);
 
 	// Reseeds the array with a new seed of given width and height
-	void reseed(int width, int height, int** seed);
+	void reseed(int rows, int cols, bool** seed);
 };
 
 // Outputs the current game in a grid format. Particularly large grids
