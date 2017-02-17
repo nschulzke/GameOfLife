@@ -23,10 +23,10 @@ bool** Seeder::blankSeed(int rows, int cols)
 bool** Seeder::glider(int rows, int cols)
 {
 	bool** seed = blankSeed(rows, cols);
-	if (rows >= 3 && cols >= 3)
+	if (rows >= GLIDER_ROWS && cols >= GLIDER_COLS)
 	{
-		for (int i = 0; i < 3; i++)
-			for (int j = 0; j < 3; j++)
+		for (int i = 0; i < GLIDER_ROWS; i++)
+			for (int j = 0; j < GLIDER_COLS; j++)
 				seed[i][j] = GLIDER[i][j];
 	}
 	return seed;
