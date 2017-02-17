@@ -111,11 +111,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Cell.h" />
-    <ClInclude Include="GameOfLife.h" />
+    <ClInclude Include="Life.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Cell.cpp" />
-    <ClCompile Include="GameOfLife.cpp" />
+    <ClCompile Include="Life.cpp" />
     <ClCompile Include="Tester.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

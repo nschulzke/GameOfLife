@@ -15,21 +15,21 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="GameOfLife.h">
+    <ClInclude Include="Cell.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Cell.h">
+    <ClInclude Include="Life.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="GameOfLife.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Cell.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Tester.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Life.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

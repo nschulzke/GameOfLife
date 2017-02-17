@@ -1,4 +1,4 @@
-#include "GameOfLife.h"
+#include "Life.h"
 
 void Life::deleteBoard()
 {
