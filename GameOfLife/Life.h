@@ -6,6 +6,13 @@
 class Life
 {
 private:
+	// Cells with FEWER neighbors than this will die
+	const static int STARVE = 2;
+	// Cells with MORE neighbors than this will die
+	const static int OVERPOP = 3;
+	// Cells with EXACTLY this many neighbors will become living if they were dead
+	const static int REPRODUCE = 3;
+
 	Cell** _board;
 	int _rows;
 	int _cols;

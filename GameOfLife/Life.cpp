@@ -14,7 +14,30 @@ void Life::deleteBoard()
 
 void Life::mark(int row, int col)
 {
-	// examine surround cells and call willBeAlive() on the cell at row,col with the appropriate value
+	// These values draw a box around the cell, cells making up the box
+	// are the cells we need to check
+	int minRow = (row == 0) ? 0 : row - 1;
+	int maxRow = (row == (_rows - 1)) ? _rows - 1 : row + 1;
+	int minCol = (col == 0) ? 0 : col - 1;
+	int maxCol = (col == (_cols - 1)) ? _cols - 1 : col + 1;
+
+	int livingNeighbors = 0;
+	for (int i = minRow; i <= maxRow; i++)
+	{
+		for (int j = minCol; j <= maxCol; j++)
+		{
+			// Only check the cells that aren't the middle
+			if (i != row || j != col)
+				if (_board[i][j].isAlive())
+					livingNeighbors++;
+		}
+	}
+
+	if (livingNeighbors < STARVE || livingNeighbors > OVERPOP)
+		_board[row][col].willBeAlive(false);
+	else if (livingNeighbors == REPRODUCE)
+		_board[row][col].willBeAlive(true);
+	// If it's not either of these, willBeAlive is already the same as isAlive, so we do nothing
 }
 
 void Life::mark()
