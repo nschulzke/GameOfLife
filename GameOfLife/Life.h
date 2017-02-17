@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include "Cell.h"
+#include "Seed.h"
 
 class Life
 {
@@ -28,9 +29,7 @@ private:
 	//	marked cells to be dead or alive
 	void move();
 public:
-	// Expects the passed seed array to be of the same width
-	//	and height as the values passed
-	Life(int rows, int cols, bool** seed);
+	Life(const Seed& seed);
 	~Life();
 
 	// Returns the number of steps that have been taken on
@@ -45,12 +44,12 @@ public:
 	// Steps through the given number of iterations
 	void step(int steps = 1);
 
-	// Reseeds the array with a new seed of given width and height
-	void reseed(int rows, int cols, bool** seed);
+	// Reseeds the array with a new seed
+	void reseed(const Seed& seed);
 	// Takes the current board and overlays a new seed
 	//	Any cells living in the new seed will be living on the board
 	//	Dead cells on new seed have no effect on the board
-	void overlay(int rows, int cols, bool** seed);
+	void overlay(const Seed& seed);
 };
 
 // Outputs the current game in a grid format. Particularly large grids

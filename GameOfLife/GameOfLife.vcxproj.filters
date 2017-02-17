@@ -21,7 +21,7 @@
     <ClInclude Include="Life.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Seeder.h">
+    <ClInclude Include="Seed.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -35,7 +35,7 @@
     <ClCompile Include="Life.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Seeder.cpp">
+    <ClCompile Include="Seed.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

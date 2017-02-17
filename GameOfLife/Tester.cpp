@@ -1,6 +1,6 @@
 #include <iostream>
 #include "Life.h"
-#include "Seeder.h"
+#include "Seed.h"
 
 int main()
 {
@@ -8,17 +8,9 @@ int main()
 	int cols = 20;
 	int rounds = 63;
 
-	bool** seed = Seeder::glider(rows, cols);
+	Seed seed = Seed::glider(rows, cols);
 
-	Life life(rows, cols, seed);
-
-	for (int i = 0; i < rounds; i++)
-	{
-		std::cout << life << std::endl;
-		life.step();
-	}
-
-	life.overlay(rows, cols, seed);
+	Life life(seed);
 
 	for (int i = 0; i < rounds; i++)
 	{
@@ -26,7 +18,13 @@ int main()
 		life.step();
 	}
 
-	Seeder::deleteSeed(rows, cols, seed);
+	life.overlay(seed);
+
+	for (int i = 0; i < rounds; i++)
+	{
+		std::cout << life << std::endl;
+		life.step();
+	}
 
 	system("PAUSE");
 	return 0;

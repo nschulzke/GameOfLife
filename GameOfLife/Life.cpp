@@ -54,10 +54,10 @@ void Life::move()
 			_board[i][j].step();
 }
 
-Life::Life(int rows, int cols, bool** seed)
-{	// Set the board to nullptr, then reseed
+Life::Life(const Seed& seed)
+{
 	_board = nullptr;
-	reseed(rows, cols, seed);
+	reseed(seed);
 }
 
 Life::~Life()
@@ -95,31 +95,31 @@ void Life::step(int steps)
 	_steps += steps;
 }
 
-void Life::reseed(int rows, int cols, bool** seed)
+void Life::reseed(const Seed& seed)
 {
 	// If there's already a board, make sure we delete it
 	deleteBoard();
 	// Set the rows and cols properties
-	_rows = rows;
-	_cols = cols;
+	_rows = seed.rows();
+	_cols = seed.cols();
 	// Create the new board
-	_board = new Cell*[rows];
-	for (int i = 0; i < rows; i++)
-		_board[i] = new Cell[cols];
+	_board = new Cell*[seed.rows()];
+	for (int i = 0; i < seed.rows(); i++)
+		_board[i] = new Cell[seed.cols()];
 	// Initialize the values to match the seed
-	for (int i = 0; i < rows; i++)
-		for (int j = 0; j < cols; j++)
-			_board[i][j] = Cell(seed[i][j]);
+	for (int i = 0; i < seed.rows(); i++)
+		for (int j = 0; j < seed.cols(); j++)
+			_board[i][j] = Cell(seed.isAlive(i,j));
 	// Reset _steps to 0 so we can count again
 	_steps = 0;
 }
 
-void Life::overlay(int rows, int cols, bool** seed)
+void Life::overlay(const Seed& seed)
 {
-	for (int i = 0; i < rows; i++)
-		for (int j = 0; j < cols; j++)
-			if (seed[i][j] == true)	// Only change board if the cell is alive
-				_board[i][j] = Cell(seed[i][j]);
+	for (int i = 0; i < seed.rows(); i++)
+		for (int j = 0; j < seed.cols(); j++)
+			if (seed.isAlive(i,j) == true)	// Only change board if the cell is alive
+				_board[i][j] = Cell(seed.isAlive(i,j));
 }
 
 std::ostream & operator<<(std::ostream & out, const Life& life)
