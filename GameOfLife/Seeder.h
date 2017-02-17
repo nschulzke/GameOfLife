@@ -11,5 +11,6 @@ private:
 public:
 	static bool** glider(int rows, int cols);
 
+	static void deleteSeed(int rows, int cols, bool** seed);
 };
 
