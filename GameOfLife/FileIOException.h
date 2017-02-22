@@ -4,8 +4,9 @@
 
 class FileIOException
 {
-private:
+public:
 	enum Type { INVALID_FORMAT, BAD_FILE };
+private:
 	std::string _fileName;
 	Type _type;
 public:

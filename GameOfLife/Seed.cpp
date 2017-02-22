@@ -112,7 +112,7 @@ void Seed::loadFile(std::string fileName)
 		while (std::getline(input, temp))
 			lines.push_back(temp);
 	else
-		throw 2;	// Make an exception: file read error
+		throw FileIOException(FileIOException::BAD_FILE, fileName);
 
 	_cols = lines.at(0).size();
 	_rows = lines.size();
@@ -121,7 +121,7 @@ void Seed::loadFile(std::string fileName)
 	{
 		std::string str = lines.at(i);
 		if (str.size() != _cols)
-			throw 1;	// Make into an exception: invalid file
+			throw FileIOException(FileIOException::INVALID_FORMAT, fileName);
 		for (int j = 0; j < str.size(); j++)
 		{
 			char ch = str.at(j);
