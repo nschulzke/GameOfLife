@@ -19,7 +19,7 @@ std::string FileIOException::fileName()
 	return _fileName;
 }
 
-Type FileIOException::type()
+FileIOException::Type FileIOException::type()
 {
 	return _type;
 }
