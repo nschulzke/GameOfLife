@@ -21,9 +21,7 @@ int main()
 	double average;
 
 	start = clock();
-	for (int i = 0; i < 50; i++)
-		life.step();
-
+	life.step(50);
 	life.overlay(seed);
 
 	while (life.hasLife())
