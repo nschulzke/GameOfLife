@@ -28,20 +28,6 @@ void Life::mark(int row, int col)
 	// If it's not either of these, willBeAlive is already the same as isAlive, so we do nothing
 }
 
-void Life::mark()
-{
-	for (int i = 0; i < _rows; i++)
-		for (int j = 0; j < _cols; j++)
-			mark(i, j);
-}
-
-void Life::move()
-{
-	for (int i = 0; i < _rows; i++)
-		for (int j = 0; j < _cols; j++)
-			_board[i][j].step();
-}
-
 void Life::deleteBoard()
 {
 	// If there's no board, we can't run this loop, so do nothing
@@ -134,8 +120,14 @@ void Life::step(int steps)
 {
 	for (int i = 0; i < steps; i++)
 	{
-		mark();
-		move();
+		// Cycle through and mark each item for its future state
+		for (int i = 0; i < _rows; i++)
+			for (int j = 0; j < _cols; j++)
+				mark(i, j);
+		// Tell each cell to move to the next state
+		for (int i = 0; i < _rows; i++)
+			for (int j = 0; j < _cols; j++)
+				_board[i][j].step();
 	}
 	_steps += steps;
 }

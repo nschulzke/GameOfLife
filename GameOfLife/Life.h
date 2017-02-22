@@ -22,11 +22,6 @@ private:
 	// Marks the given cell as to whether it will be alive
 	//	or dead in the next round by examining surrounding cells
 	void mark(int row, int col);
-	// Goes through the board once and mark all cells
-	void mark();
-	// Goes through a marked board and actually switch the
-	//	marked cells to be dead or alive
-	void move();
 
 	// Deletes the board
 	void deleteBoard();
