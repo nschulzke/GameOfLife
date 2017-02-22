@@ -7,17 +7,11 @@ const int MICROS_PER_SECOND = 1000000;
 
 int main()
 {
-	int rows = 20;
-	int cols = 20;
-
-	Seed seed = Seed::glider(rows, cols);
+	Seed seed = Seed("test.txt");
 
 	Life life(seed);
 
-	life.step(50);
-	life.overlay(seed);
-
-	while (life.hasLife())
+	for (int i = 0; i < 20; i++)
 	{
 		std::cout << life << std::endl;
 		life.step();

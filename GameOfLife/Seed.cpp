@@ -47,6 +47,11 @@ Seed::Seed(int rows, int cols)
 	blankSeed(_rows, _cols);
 }
 
+Seed::Seed(std::string fileName)
+{
+	loadFile(fileName);
+}
+
 Seed::Seed(const Seed& seedIn)
 {	// Copy constructor: first build a blank Seed, then copy the data from seedIn
 	blankSeed(seedIn.rows(), seedIn.cols());
@@ -95,6 +100,37 @@ int Seed::cols() const
 bool Seed::isAlive(int row, int col) const
 {
 	return _seed[row][col];
+}
+
+void Seed::loadFile(std::string fileName)
+{
+	std::vector<std::string> lines;
+	std::ifstream input(fileName);
+	std::string temp;
+	
+	if (input.good())
+		while (std::getline(input, temp))
+			lines.push_back(temp);
+	else
+		throw 2;	// Make an exception: file read error
+
+	_cols = lines.at(0).size();
+	_rows = lines.size();
+	blankSeed(_rows, _cols);
+	for (int i = 0; i < lines.size(); i++)
+	{
+		std::string str = lines.at(i);
+		if (str.size() != _cols)
+			throw 1;	// Make into an exception: invalid file
+		for (int j = 0; j < str.size(); j++)
+		{
+			char ch = str.at(j);
+			if (ch == '-')
+				_seed[i][j] = false;
+			else
+				_seed[i][j] = true;
+		}
+	}
 }
 
 void Seed::isAlive(int row, int col, bool trueFalse)

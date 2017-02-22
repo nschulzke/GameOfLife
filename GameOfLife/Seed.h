@@ -1,5 +1,9 @@
 #pragma once
 
+#include <fstream>
+#include <string>
+#include <vector>
+
 class Seed
 {
 private:
@@ -21,6 +25,8 @@ private:
 public:
 	// Make a Seed object from a bool**
 	Seed(int rows, int cols);
+	// Load a Seed from a file
+	Seed(std::string fileName);
 	// Copy constructor
 	Seed(const Seed& seedIn);
 	// Assignment operator
@@ -35,6 +41,8 @@ public:
 	int cols() const;
 	// Gets alive status of given cell
 	bool isAlive(int row, int col) const;
+
+	void loadFile(std::string fileName);
 
 	// Sets the cell at given row/col to alive or dead
 	void isAlive(int row, int col, bool trueFalse);
