@@ -12,5 +12,7 @@ private:
 public:
 	FileIOException(Type type, std::string fileName);
 	std::string toString();
+	std::string fileName();
+	Type type();
 };
 

@@ -13,3 +13,13 @@ std::string FileIOException::toString()
 	else
 		return "Unable to open file: " + _fileName;
 }
+
+std::string FileIOException::fileName()
+{
+	return _fileName;
+}
+
+Type FileIOException::type()
+{
+	return _type;
+}
