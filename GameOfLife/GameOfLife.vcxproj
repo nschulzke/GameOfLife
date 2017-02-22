@@ -111,11 +111,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Cell.h" />
+    <ClInclude Include="FileIOException.h" />
     <ClInclude Include="Life.h" />
     <ClInclude Include="Seed.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Cell.cpp" />
+    <ClCompile Include="FileIOException.cpp" />
     <ClCompile Include="Life.cpp" />
     <ClCompile Include="Seed.cpp" />
     <ClCompile Include="Tester.cpp" />
