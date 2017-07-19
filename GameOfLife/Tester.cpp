@@ -6,15 +6,21 @@
 
 const int MICROS_PER_SECOND = 1000000;
 
-int main()
+int main(int arg_count, char *args[])
 {
+	if (arg_count != 3) {
+		std::cout << "Usage: " << args[0] << " file_name number_of_steps";
+		return 1;
+	}
+
 	try
 	{
-		Seed seed = Seed("test.txt");
+		Seed seed = Seed(args[1]);
+		int num_steps = std::atoi(args[2]);
 
 		Life life(seed);
 
-		for (int i = 0; i < 20; i++)
+		for (int i = 0; i < num_steps; i++)
 		{
 			std::cout << life << std::endl;
 			life.step();
@@ -24,7 +30,5 @@ int main()
 	{
 		std::cout << e.toString() << std::endl;
 	}
-
-	system("PAUSE");
 	return 0;
 }
